@@ -27,13 +27,10 @@ The authoritative spec is `klang-bench-spec.md`. Read it before doing anything s
 
 ```bash
 pip install graphifyy && graphify install   # knowledge graph from raw/ files
-git clone https://github.com/karpathy/llm-council && cd llm-council && uv sync
-pip install openrouter                      # for council agent API calls
 ```
 
 `autoresearch` is NOT installed — BENCH borrows only the `loop.md` iteration pattern from it.
-
-Requires `OPENROUTER_API_KEY` in `.env`.
+`llm-council` is NOT used — council agent removed from scope.
 
 ---
 
@@ -45,7 +42,7 @@ klang-bench/
 │   ├── CLAUDE.md          # Master agent instructions (content in spec § CLAUDE.md)
 │   └── settings.json      # Hook permissions
 ├── agents/                # 8 markdown agent instruction files
-├── hooks/                 # 4 shell hooks (on-start, post-research, post-loop, post-learn)
+├── hooks/                 # 5 shell hooks (on-start, on-stop, post-research, post-loop, post-learn)
 ├── skills/                # registry.md + electronics/platforms/firmware/production/
 ├── projects/              # One self-contained folder per hardware project
 ├── vault/                 # Global Obsidian vault across all projects
@@ -62,12 +59,12 @@ Work through these in order — each phase is independently testable.
 
 | Phase | What it covers |
 |---|---|
-| 1 — Skeleton | Repo scaffold, CLAUDE.md, state.json, new-project.sh, on-start.sh hook |
+| 1 — Skeleton | Repo scaffold, CLAUDE.md, state.json, new-project.sh, on-start/on-stop hooks |
 | 2 — Knowledge layer | graphify integration, vault-writer agent, initial skill files, registry |
-| 3 — Research loop | research.md agent, council.md agent (OpenRouter multi-model) |
+| 3 — Research loop | research.md agent (MCP + web search, no council) |
 | 4 — Prototype + iterate | prototype.md agent, loop.md agent, post-loop.sh hook |
 | 5 — Firmware + promote | firmware.md agent, promote.md agent, promote.sh script |
-| 6 — Polish | learn.md agent, remaining skill files, README, end-to-end test |
+| 6 — Polish | learn.md agent, start.md agent, .env.example, consistency pass |
 
 ---
 
@@ -76,7 +73,7 @@ Work through these in order — each phase is independently testable.
 - **Agents are markdown files** — plain instruction files in `agents/`, not code. Claude Code reads them as context.
 - **`.claude/CLAUDE.md`** is the master runtime instructions (different from this dev file). Its content is defined in the spec under `§ CLAUDE.md — master agent instructions`.
 - **Hooks are shell scripts** — triggered by Claude Code's hooks system in `.claude/settings.json`.
-- **graphify exposes an MCP server** — agents query `graphify-out/graph.json` via `python -m graphify.serve` rather than grepping flat files.
+- **graphify MCP server is session-scoped** — `on-start.sh` starts it for the active project, `on-stop.sh` kills it. Agents query via MCP, never grep flat files.
 - **loop.md is the shared memory** — human writes results, agent reads full history, proposes one change per turn. Never overwrite entries.
 - **skills/registry.md is always checked first** — agents load relevant skill files before any task.
 
@@ -106,4 +103,4 @@ Work through these in order — each phase is independently testable.
 
 ## Out of scope
 
-Consumer electronics repair, RF/radio hardware, anything outside audio signal path + control hardware. Do not build graphify, llm-council, or autoresearch from scratch.
+Consumer electronics repair, RF/radio hardware, anything outside audio signal path + control hardware. Multi-model council/deliberation (removed — too complex). Do not build graphify or autoresearch from scratch.

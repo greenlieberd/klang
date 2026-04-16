@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "graphify": {
+      "command": "bash",
+      "args": ["scripts/serve-graph.sh"],
+      "env": {}
+    }
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash hooks/on-stop.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash hooks/post-loop.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
