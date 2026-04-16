@@ -24,7 +24,7 @@ if [ ! -d "$RAW" ]; then
 fi
 
 echo "[post-research] Running graphify update for $PROJECT..."
-graphify "$RAW" --update --obsidian --obsidian-dir vault
+"$(dirname "$0")/../.venv/bin/graphify" update "$RAW" --obsidian --obsidian-dir vault
 
 echo "[post-research] Rebuilding vault index..."
 bash scripts/vault-index.sh

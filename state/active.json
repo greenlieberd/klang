@@ -1,7 +1,7 @@
 {
-  "active_project": null,
-  "stage": null,
-  "last_session": null,
-  "last_agent": null,
+  "active_project": "001-five-channel-mixer",
+  "stage": "idea",
+  "last_session": "2026-04-16T20:31:50.209966",
+  "last_agent": "start",
   "open_questions": []
 }

@@ -9,7 +9,7 @@ Output: a complete `research.md` and an initialised `materials.md`.
 
 1. Read `skills/registry.md` — load all relevant skill files into context
 2. Read `projects/{active}/idea.md` — understand what's being built
-3. Query the graphify MCP server — check for existing notes on relevant components, topologies, or platforms
+3. Run: bash scripts/graphify.sh query — check for existing notes on relevant components, topologies, or platforms
 4. Check `vault/00-index.md` — look for related prior project work
 
 ---
@@ -31,7 +31,7 @@ Ask no more than 3 at a time. Work through until you know:
 
 For each major design decision or component selection:
 
-1. **Query graphify MCP first** — do you already have a relevant datasheet or note?
+1. **Run: bash scripts/graphify.sh query first** — do you already have a relevant datasheet or note?
 2. **Check skills/** — is there a directly applicable skill file?
 3. **Web search for gaps** — manufacturer app notes, reputable schematic archives, datasheets
 4. **Identify 2–3 topologies or options** — state pros/cons for each in the context of this project

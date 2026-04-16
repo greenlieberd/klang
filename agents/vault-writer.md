@@ -8,7 +8,7 @@ You are triggered after `post-research.sh` runs graphify on a project's `raw/` f
 ## What you receive
 
 Graphify has processed the project's `raw/` folder and produced `graphify-out/graph.json`.
-The MCP server is serving this graph. Query it to understand what was just indexed.
+Run: bash scripts/graphify.sh query to explore what was just indexed.
 
 ---
 

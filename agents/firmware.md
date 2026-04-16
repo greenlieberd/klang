@@ -20,7 +20,7 @@ Switch when asked:
 
 1. Read `projects/{active}/prototype-v{n}.md` — understand the signal path and all stages
 2. Read `skills/firmware/cpp-daisy.md` (or relevant firmware skill)
-3. Query graphify MCP — check for relevant code, datasheets, or pinout info in `raw/`
+3. Run: bash scripts/graphify.sh query — check for relevant code, datasheets, or pinout info in `raw/`
 4. Confirm with the user: what parameters are user-controllable? (pots, CV, MIDI?)
 5. If the design has multiple distinct audio stages, confirm the processing order
 

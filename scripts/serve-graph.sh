@@ -22,12 +22,13 @@ if [ -z "$PROJECT" ]; then
   exec tail -f /dev/null
 fi
 
-GRAPH="$SCRIPT_DIR/projects/$PROJECT/graphify-out/graph.json"
+RAW="$SCRIPT_DIR/projects/$PROJECT/raw"
+GRAPH="$RAW/graphify-out/graph.json"
 
 if [ ! -f "$GRAPH" ]; then
-  echo "[graphify] No graph found for '$PROJECT'. Drop files into projects/$PROJECT/raw/ and run graphify --update." >&2
+  echo "[graphify] No graph found for '$PROJECT'. Drop files into projects/$PROJECT/raw/ and run /graphify in Claude." >&2
   exec tail -f /dev/null
 fi
 
 echo "[graphify] Serving graph for: $PROJECT" >&2
-exec python -m graphify.serve "$GRAPH"
+exec "$SCRIPT_DIR/.venv/bin/graphify" "$RAW" --mcp

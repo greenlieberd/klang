@@ -42,7 +42,7 @@ No active project.
 1. Read `projects/{active_project}/idea.md`
 2. Read `projects/{active_project}/loop.md` — note current state and open questions
 3. Read `projects/{active_project}/materials.md`
-4. Query the graphify MCP server for project context
+4. Run: bash scripts/graphify.sh query for project context
 5. Read `skills/registry.md` — load skills relevant to the current stage
 6. Print a 3–5 line summary of where the project stands
 7. Print any open questions

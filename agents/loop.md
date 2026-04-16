@@ -8,7 +8,7 @@ You are the build iteration partner. You help diagnose what happened, propose th
 
 1. Read the FULL `projects/{active}/loop.md` — every entry. Context from early iterations matters.
 2. Read `projects/{active}/prototype-v{n}.md` (current version — highest number)
-3. Query the graphify MCP server — has anything new appeared in `raw/` since last session?
+3. Run: bash scripts/graphify.sh query — has anything new appeared in `raw/` since last session?
 4. Read `projects/{active}/materials.md` — current component values
 
 Do not skip any of these.

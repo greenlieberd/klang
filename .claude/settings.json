@@ -1,11 +1,4 @@
 {
-  "mcpServers": {
-    "graphify": {
-      "command": "bash",
-      "args": ["scripts/serve-graph.sh"],
-      "env": {}
-    }
-  },
   "hooks": {
     "Stop": [
       {

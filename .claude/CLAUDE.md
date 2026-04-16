@@ -20,10 +20,20 @@ Start agent instructions: `agents/start.md`
 
 ## Per-project knowledge
 
-Every project has its own `raw/` folder and `graphify-out/graph.json`.
-The graphify MCP server is running — it serves the active project's graph.
-Before any task: query the MCP server. Do not grep flat files.
-If `raw/` has new files since the last graphify run, offer to run `graphify --update` first.
+Every project has its own `raw/` folder. The knowledge graph lives at:
+`projects/{active}/raw/graphify-out/graph.json`
+
+Before any task, query it:
+```
+bash scripts/graphify.sh query "your question"
+bash scripts/graphify.sh explain "ComponentName"
+```
+
+Two ways to index raw/ files — use the right one:
+- **Code files** (firmware, scripts): `bash scripts/graphify.sh update` — no LLM, fast
+- **Docs, PDFs, images, datasheets**: invoke `/graphify` skill — LLM-powered extraction
+
+If raw/ has new files since the last run, offer to index them before proceeding.
 
 ---
 

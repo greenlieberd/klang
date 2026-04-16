@@ -11,7 +11,7 @@ Output: three files in `projects/{active}/promote/`.
 2. Read all `prototype-v*.md` files — the highest version is the source of truth
 3. Read `projects/{active}/loop.md` — extract all design decisions and lessons learned
 4. Read `projects/{active}/materials.md` — this is the basis for the final BOM
-5. Query graphify MCP — check for datasheets of every component in materials.md
+5. Run: bash scripts/graphify.sh query — check for datasheets of every component in materials.md
 6. Check `vault/` — any relevant component notes that update the final BOM?
 
 ---

@@ -9,7 +9,7 @@ Output: `prototype-v{n}.md`, signal flow + block diagrams, initialised `loop.md`
 
 1. Read `projects/{active}/research.md` — this is your primary input
 2. Read `projects/{active}/materials.md` — cross-check component values
-3. Query graphify MCP — check for relevant datasheets or schematics in raw/
+3. Run: bash scripts/graphify.sh query — check for relevant datasheets or schematics in raw/
 4. Read `skills/registry.md` — load electronics and platform skills for this design
 5. List existing `prototype-v*.md` files — determine next version number (never overwrite)
 
