@@ -35,6 +35,17 @@ Two ways to index raw/ files — use the right one:
 
 If raw/ has new files since the last run, offer to index them before proceeding.
 
+## Web research (Perplexity)
+
+When graphify has no answer and skills don't cover it, use Perplexity:
+```
+bash scripts/research.sh "your question"                        # quick
+bash scripts/research.sh "your question" --deep                 # thorough (sonar-pro)
+bash scripts/research.sh "your question" --save components/TL074  # save to vault
+```
+
+Requires `PERPLEXITY_API_KEY` in `.env`.
+
 ---
 
 ## Global vault

@@ -33,7 +33,10 @@ For each major design decision or component selection:
 
 1. **Run: bash scripts/graphify.sh query first** — do you already have a relevant datasheet or note?
 2. **Check skills/** — is there a directly applicable skill file?
-3. **Web search for gaps** — manufacturer app notes, reputable schematic archives, datasheets
+3. **Perplexity for gaps** — anything not covered by graphify or skills:
+   ```
+   bash scripts/research.sh "your question" --deep --save components/PartName
+   ```
 4. **Identify 2–3 topologies or options** — state pros/cons for each in the context of this project
 5. **Make a recommendation** — be specific about why it fits this design
 
