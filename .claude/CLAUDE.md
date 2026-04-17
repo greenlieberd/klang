@@ -18,22 +18,23 @@ Start agent instructions: `agents/start.md`
 
 ---
 
-## Per-project knowledge
+## Knowledge — two layers
 
-Every project has its own `raw/` folder. The knowledge graph lives at:
-`projects/{active}/raw/graphify-out/graph.json`
+**Global** (`raw/` at repo root) — shared across all projects. Drop datasheets, reference docs, links here once and every project benefits. Indexed into `vault/`.
 
-Before any task, query it:
+**Per-project** (`projects/{id}/raw/`) — specific to one project. Datasheets for parts you're using, reference schematics, photos.
+
+Before any task, query both:
 ```
 bash scripts/graphify.sh query "your question"
-bash scripts/graphify.sh explain "ComponentName"
 ```
+This searches global graph first, then project graph, and reports both.
 
-Two ways to index raw/ files — use the right one:
-- **Code files** (firmware, scripts): `bash scripts/graphify.sh update` — no LLM, fast
-- **Docs, PDFs, images, datasheets**: invoke `/graphify` skill — LLM-powered extraction
+Two ways to index new files:
+- **Code files**: `bash scripts/graphify.sh update` (project) or `global-update` (global) — no LLM, fast
+- **Docs, PDFs, images**: invoke `/graphify` skill in Claude Code — LLM-powered
 
-If raw/ has new files since the last run, offer to index them before proceeding.
+If `raw/` or `raw/` has unindexed files (on-start will flag this), offer to index before proceeding.
 
 ## Web research (Perplexity)
 

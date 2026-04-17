@@ -48,3 +48,20 @@ echo "stage: $STAGE"
 echo "last_session: $LAST"
 echo "open_questions: $QUESTIONS"
 echo "==================="
+
+# Check if global raw/ has unindexed files
+GLOBAL_RAW="raw"
+GLOBAL_GRAPH="$GLOBAL_RAW/graphify-out/graph.json"
+GLOBAL_FILES=$(find "$GLOBAL_RAW" -type f ! -name ".gitkeep" ! -name ".graphifyignore" ! -path "*/graphify-out/*" 2>/dev/null | wc -l | tr -d ' ')
+
+if [ "$GLOBAL_FILES" -gt 0 ] && [ ! -f "$GLOBAL_GRAPH" ]; then
+  echo "=== GLOBAL RAW ==="
+  echo "status: $GLOBAL_FILES files not yet indexed"
+  echo "action: run 'bash scripts/graphify.sh global-update' to index into vault"
+  echo "=================="
+elif [ "$GLOBAL_FILES" -gt 0 ]; then
+  echo "=== GLOBAL RAW ==="
+  echo "files: $GLOBAL_FILES"
+  echo "graph: indexed"
+  echo "=================="
+fi
