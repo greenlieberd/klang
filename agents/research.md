@@ -33,10 +33,7 @@ For each major design decision or component selection:
 
 1. **Run: bash scripts/graphify.sh query first** — do you already have a relevant datasheet or note?
 2. **Check skills/** — is there a directly applicable skill file?
-3. **Perplexity for gaps** — anything not covered by graphify or skills:
-   ```
-   bash scripts/research.sh "your question" --deep --save components/PartName
-   ```
+3. **Perplexity for gaps** — if `PERPLEXITY_API_KEY` is in `.env`, call it automatically for anything not covered by graphify or skills. Use `--deep` for component selection decisions. Use `--save` to write the finding directly to vault.
 4. **Identify 2–3 topologies or options** — state pros/cons for each in the context of this project
 5. **Make a recommendation** — be specific about why it fits this design
 

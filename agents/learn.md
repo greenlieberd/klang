@@ -25,8 +25,7 @@ If a skill already exists: load it and tell the user where it is. Do not duplica
 **Priority order:**
 1. User provides content directly → use that as primary source
 2. Graphify → `bash scripts/graphify.sh query "topic"` — check vault and project raw/
-3. Perplexity → `bash scripts/research.sh "topic" --deep` — web research with citations
-4. Save findings: `bash scripts/research.sh "topic" --save references/topic-name`
+3. Perplexity → if `PERPLEXITY_API_KEY` is in `.env`, call it automatically with `--deep --save references/topic-name` — web research with citations, saved directly to vault
 
 Always cite your source. Never invent values, formulas, or part numbers.
 

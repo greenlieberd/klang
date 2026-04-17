@@ -37,14 +37,13 @@ If raw/ has new files since the last run, offer to index them before proceeding.
 
 ## Web research (Perplexity)
 
-When graphify has no answer and skills don't cover it, use Perplexity:
-```
-bash scripts/research.sh "your question"                        # quick
-bash scripts/research.sh "your question" --deep                 # thorough (sonar-pro)
-bash scripts/research.sh "your question" --save components/TL074  # save to vault
-```
+When graphify has no answer and skills don't cover it, call Perplexity automatically:
+- Check `.env` for `PERPLEXITY_API_KEY` — if present, use it without asking
+- Quick: `bash scripts/research.sh "question"`
+- Deep: `bash scripts/research.sh "question" --deep`
+- Save to vault: add `--save components/PartName` (writes vault note + rebuilds index)
 
-Requires `PERPLEXITY_API_KEY` in `.env`.
+Never ask the user to run this themselves. Call it and report the findings.
 
 ---
 
